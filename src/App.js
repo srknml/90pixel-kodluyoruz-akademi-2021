@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect } from "react";
+import ProfileCardContainer from "./components/ProfileCardContainer";
+import Header from "./components/Header";
+import JoinForm from "./components/JoinForm";
+import { dbMethods } from "./database/databaseMethods";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [profiles, setProfiles] = useState([]);
+
+    useEffect(() => {
+        fetchAndSetProfiles();
+    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    async function fetchAndSetProfiles() {
+        const data = await dbMethods.get();
+        setProfiles(data);
+    }
+    return (
+        <div className="App">
+            <Header />
+            <JoinForm fetchAndSetProfiles={fetchAndSetProfiles} />
+            <ProfileCardContainer profiles={profiles} />
+        </div>
+    );
 }
 
 export default App;

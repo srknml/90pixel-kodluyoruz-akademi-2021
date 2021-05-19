@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background-color: #f4a734;
+    padding: 0 1.5rem;
+    font-weight: 600;
+    height: 60px;
+    /* position: fixed; */
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 10px;
+}
+.nav-list-item {
+    padding: 0 20px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+/* @media (max-width: 40.625em) {
+    .header {
+        width: 100%;
+    }
+}
+
+@media (max-width: 55.625em) {
+    .header {
+        width: 100%;
+    }
+} */

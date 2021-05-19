@@ -1,0 +1,72 @@
+.profile-card {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+    transition: 0.2s ease-in-out 0s;
+}
+.profile-imgBox {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-content {
+    display: flex;
+    position: absolute;
+    min-width: 200px;
+    max-width: 200px;
+    color: rgb(255, 255, 255);
+    flex-direction: column;
+    border-radius: 0.5rem;
+}
+
+.content-section {
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: -52px;
+    text-transform: capitalize;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: rgba(59, 53, 53, 0.637);
+    visibility: hidden;
+    transition: visibility 0.1s step-end, bottom 0.1s ease-out;
+}
+.content-section span {
+    padding: 2px 0;
+}
+
+.content-section:not(:last-child) {
+    border-bottom: 2px solid #f4a734;
+}
+.content-section a:hover {
+    color: #fcb955;
+}
+.content-section:last-child {
+    border-radius: 0.5rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.name {
+    background-color: rgba(29, 25, 25, 0.521);
+    width: 100%;
+    visibility: visible !important;
+    border-radius: 0.5rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.profile-card:hover .content-section {
+    visibility: visible;
+    bottom: 0;
+}
+.profile-card:hover .name {
+    border-radius: 0;
+}
