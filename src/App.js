@@ -9,6 +9,7 @@ function App() {
     const [profiles, setProfiles] = useState([]);
 
     useEffect(() => {
+        document.title = "90pixel-Kodluyoruz Akademi"
         fetchAndSetProfiles();
     }, []);
     // eslint-disable-next-line react-hooks/exhaustive-deps
