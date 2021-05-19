@@ -4,7 +4,6 @@ import { dbMethods } from "../database/databaseMethods";
 import "./styles/JoinForm.css"
 export default function JoinForm(props) {
     const [username, setUsername] = useState("");
-    const [profile, setProfile] = useState({});
 
     function fetchProfileData(username) {
         const url = `https://api.github.com/users/${username}`;
