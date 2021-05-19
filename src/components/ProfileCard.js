@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles/ProfileCard.css";
 export default function ProfileCard(profile) {
-    console.log(profile);
     return (
         <div key={profile.id} className="profile-card">
             <div className="profile-imgBox">
@@ -13,7 +12,9 @@ export default function ProfileCard(profile) {
             </div>
             <div className="profile-content">
                 <div className="content-section">
-                    <span className="name">{profile.name ? profile.name : "belirtilmemiş"}</span>
+                    <span className="name">
+                        {profile.name ? profile.name : "belirtilmemiş"}
+                    </span>
                     <span>
                         {profile.location ? profile.location : "belirtilmemiş"}
                     </span>
@@ -24,17 +25,7 @@ export default function ProfileCard(profile) {
                         <a href={profile.profilLink}>GitHub</a>{" "}
                     </span>
                     {/* Linkedin Profil Linki */}
-
                 </div>
-                {/* <div className="content-section">
-                    <span>
-                        {profile.email ? (
-                            <a href={`mailto:${profile.email}`}>Contact</a>
-                        ) : (
-                            ""
-                        )}
-                    </span>
-                </div> */}
             </div>
         </div>
     );
