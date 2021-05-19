@@ -5,7 +5,7 @@ export default function Header() {
         <header className = "header" >
             <a href="/" >Homepage</a>
             <ul className = "nav-list">
-                <li className = "nav-list-item" > <a href= "www.google.com" >Contribute</a> </li>
+                <li className = "nav-list-item" > <a href= "https://github.com/Schude/90pixel-kodluyoruz-akademi-2021" >Contribute</a> </li>
             </ul>
         </header>
     );
