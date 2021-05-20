@@ -1,8 +1,9 @@
 import React from "react";
 import "./styles/ProfileCard.css";
 export default function ProfileCard(profile) {
+    console.log(profile)
     return (
-        <div key={profile.id} className="profile-card">
+        <div className="profile-card">
             <div className="profile-imgBox">
                 <img
                     className="profile-img"

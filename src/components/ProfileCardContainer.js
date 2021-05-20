@@ -6,7 +6,7 @@ export default function ProfileCardContainer(props) {
         <div className = "card-container">
             {props.profiles &&
                 props.profiles.map((profile) => {
-                    return  <ProfileCard  {...profile} />;
+                    return  <ProfileCard key={profile.id} {...profile} />;
                 })}
         </div>
     );
