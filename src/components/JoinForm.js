@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import "./styles/JoinForm.css"
-export default function JoinForm({fetchProfileData}) {
-    const [username, setUsername] = useState("");
+import React, { useRef } from "react";
+import "./styles/JoinForm.css";
+export default function JoinForm({ fetchProfileData }) {
+  const userNameRef = useRef();
 
-    
-    const handleChange = (event) => {
-        setUsername(event.target.value);
-    };
-    async function handleSubmit(event) {
-        event.preventDefault();
-        fetchProfileData(username);
-    }
-    return (
-        <div className="form-section" >
-            <form className="form" onSubmit={handleSubmit}>
-                <input placeholder="GitHub Username..." className = "username-input" onChange={handleChange} value={username} />
-                <button className="submit-btn" type="submit">Submit</button>
-            </form>
-        </div>
-    );
+  async function handleSubmit(event) {
+    event.preventDefault();
+    fetchProfileData(userNameRef.current.value);
+  }
+  return (
+    <div className="form-section">
+      <form className="form" onSubmit={handleSubmit}>
+        <input
+          ref={userNameRef}
+          placeholder="GitHub Username..."
+          className="username-input"
+        />
+        <button className="submit-btn">Submit</button>
+      </form>
+    </div>
+  );
 }
