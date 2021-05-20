@@ -12,6 +12,7 @@ Bu Proje 90Pixel & Kodluyoruz React ve Node.js Bootcamp katılımcılarının Gi
 
 
 -       LinkedIn profillerinin eklenmesi.
+-       Kişilere özel herkesin kendinden bahsettiği sayfa oluşturulması
 -       Kayıt formunun farklı bir sayfada olması formuna GitHub OAuth ile entegre edilmesi
 -       Kişi sayısı arttıkça "pagination" ihtiyacı
 -       Search bar oluşturulabilir.
@@ -37,3 +38,5 @@ Tüm katılımcıların, projede tek satır bile olsa bir kodunun olmasını tem
 ## Yapılacaklar
 
 -   Gelen fikirler doğrultusunda dolduralacak.
+
+-       İlk açılışta düzgün render edilmesi. DB'den verilerin alınması ve <Hero-image> yüklenmesi sebebilye sebebiyle gecikiyor olabilir.
