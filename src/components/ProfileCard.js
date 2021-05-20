@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles/ProfileCard.css";
 export default function ProfileCard(profile) {
-    console.log(profile)
     return (
         <div className="profile-card">
             <div className="profile-imgBox">
@@ -14,7 +13,7 @@ export default function ProfileCard(profile) {
             <div className="profile-content">
                 <div className="content-section">
                     <span className="name">
-                        {profile.name ? profile.name : "belirtilmemiş"}
+                        {profile.name ? profile.name : profile.username}
                     </span>
                     <span>
                         {profile.location ? profile.location : "belirtilmemiş"}
