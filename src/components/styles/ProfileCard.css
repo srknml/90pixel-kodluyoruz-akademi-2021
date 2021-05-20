@@ -1,6 +1,6 @@
 .profile-card {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 300px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -15,12 +15,16 @@
     width: 100%;
     height: 100%;
 }
+.profile-imgBox img {
+    max-width: 100%;
+    object-fit: cover;
+}
 
 .profile-content {
     display: flex;
     position: absolute;
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 250px;
+    max-width: 250px;
     color: rgb(255, 255, 255);
     flex-direction: column;
     border-radius: 0.5rem;
@@ -30,17 +34,18 @@
     display: flex;
     align-items: center;
     position: relative;
-    bottom: -52px;
+    bottom: -66px;
     text-transform: capitalize;
     flex-direction: column;
-    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-size: 18px;
     font-weight: 500;
     background-color: rgba(59, 53, 53, 0.637);
     visibility: hidden;
     transition: visibility 0.1s step-end, bottom 0.1s ease-out;
 }
 .content-section span {
-    padding: 2px 0;
+    padding: 4px 0;
 }
 
 .content-section:not(:last-child) {
@@ -56,12 +61,16 @@
 }
 
 .name {
-    background-color: rgba(29, 25, 25, 0.521);
+    background-color: rgba(29, 25, 25, 0.692);
     width: 100%;
     visibility: visible !important;
     border-radius: 0.5rem;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+.profile-card:hover {
+    box-shadow: 2px 4px 8px 1px #000000;
+    transform: scale(1.05);
 }
 .profile-card:hover .content-section {
     visibility: visible;
