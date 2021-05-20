@@ -1,8 +1,11 @@
-import React from "react";
-import hero from "../assets/hero-image.jpg";
+import React,{useEffect} from "react";
+import hero from "../assets/hero-image_50.jpg";
 import "./styles/Hero.css";
 export default function Hero() {
  
+    useEffect(() => {
+        makeSpans()
+    }, []);
     const makeSpans = () => {
         const [...elements] = document.querySelectorAll(".hero-title")
         return elements.map(element => {
@@ -13,7 +16,7 @@ export default function Hero() {
           return element.innerHTML = spans
         })
       }
-      makeSpans()
+      
 
 
     return (
