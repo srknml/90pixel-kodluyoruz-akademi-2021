@@ -97,6 +97,7 @@ function App() {
             <Header />
             <Hero />
             <JoinForm
+                setProfile = {setProfile}
                 searchOptions={searchOptions}
                 searchUsernames={searchUsernames}
                 fetchProfileData={fetchProfileData}
