@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
+import { Context } from "../contexts/ContextProvider";
 import { authMethods } from "../database/GithubAuth";
 import "./styles/JoinForm.css";
-export default function JoinForm(props) {
-    const { fetchProfileData, searchOptions, searchUsernames, setProfile } =
-        props;
-
+export default function JoinForm() {
+    const { searchUsernames, fetchProfileData, setProfile, searchOptions } = useContext(Context);
+        
     const userNameRef = useRef();
     function handleSubmit(event) {
         event.preventDefault();
@@ -14,6 +14,7 @@ export default function JoinForm(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
         let user = await authMethods.getUserInfo();
+        console.log(user);
         if (user) {
             const profileData = {
                 id: user.data.id.toString(),
@@ -30,15 +31,11 @@ export default function JoinForm(props) {
         }
     }, [setProfile]);
 
-    const searchOnChange = () => {
-        searchUsernames(userNameRef.current.value);
-    };
-
     return (
         <div className="form-section">
             <form className="form" onSubmit={handleSubmit}>
                 <input
-                    onChange={searchOnChange}
+                    onChange={() => searchUsernames(userNameRef.current.value)}
                     ref={userNameRef}
                     placeholder="Search Your GitHub Username"
                     className="username-input"
