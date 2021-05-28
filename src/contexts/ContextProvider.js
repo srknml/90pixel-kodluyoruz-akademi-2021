@@ -1,22 +1,74 @@
-import { createContext, useState } from "react";
-import { dbMethods } from "../database/databaseMethods";
+import { createContext, useState, useEffect } from "react";
+import { dbMethods } from "../firebase/DatabaseMethods";
+import { authMethods } from "../firebase/AuthMethods";
 import axios from "axios";
 
 const ContextProvider = (props) => {
     const [profile, setProfile] = useState({});
     const [profiles, setProfiles] = useState([]);
     const [searchOptions, setSearchOptions] = useState([]);
+    const [isAuthed, setIsAuthed] = useState(false);
+    const [token, setToken] = useState("");
+
+    useEffect(() => {
+        dbMethods.create(profile);
+        getProfilesFromDB().then((dataDB) => setProfiles(dataDB));
+    }, [profile]);
 
     const getProfilesFromDB = async () => {
         const data = await dbMethods.get();
         return data;
+    };
+    const getProfileFromDB = (id) => {
+        const user = dbMethods.getSingleProfile(id).then((res) => {
+            return res;
+        });
+        return user;
+    };
+
+    //Popup auth
+    const popupSign = () => {
+        authMethods.signPopup().then((res) => {
+            if (res) {
+                console.log(res);
+                setIsAuthed(true);
+                setToken(res.token);
+                // setProfile(res.user)
+            }
+        });
+    };
+    // Redirect Sign
+    const redirectSign = () => {
+        authMethods.sign();
+    };
+
+    // Redirect Auth Data
+    const redirectData = async () => {
+        let user = await authMethods.getUserInfo();
+        if (user) {
+            console.log(user);
+            const profileData = {
+                id: user.data.id.toString(),
+                name: user.data.name,
+                repos: user.data.public_repos,
+                location: user.data.location,
+                username: user.data.login,
+                image: user.data.avatar_url,
+                email: user.data.email,
+                profilLink: user.data.html_url,
+                reposLink: user.data.repos_url,
+            };
+            setProfile(profileData);
+            setToken(user.token);
+            setIsAuthed(true);
+        }
     };
 
     const fetchProfileData = async (username) => {
         try {
             const url = `https://api.github.com/users/${username}`;
             const header = {
-                authorization: `token ${process.env.REACT_APP_github_token}`,
+                authorization: `token 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`,
             };
             const res = await axios.get(url, header);
             const profileData = {
@@ -45,7 +97,6 @@ const ContextProvider = (props) => {
                     authorization: `token ${process.env.REACT_APP_github_token}`,
                 };
                 const res = await axios.get(url, header);
-                console.log(res);
                 let arr = [];
                 let length =
                     res.data.total_count < 10 ? res.data.total_count : 10;
@@ -68,6 +119,10 @@ const ContextProvider = (props) => {
     return (
         <Context.Provider
             value={{
+                popupSign,
+                redirectSign,
+                isAuthed,
+                setIsAuthed,
                 profile,
                 setProfile,
                 profiles,
@@ -77,6 +132,9 @@ const ContextProvider = (props) => {
                 getProfilesFromDB,
                 searchUsernames,
                 fetchProfileData,
+                getProfileFromDB,
+                token,
+                setToken,
             }}
         >
             {props.children}

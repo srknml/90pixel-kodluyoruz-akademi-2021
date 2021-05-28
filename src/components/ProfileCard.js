@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/ProfileCard.css";
+import { Link } from "react-router-dom";
 export default function ProfileCard(profile) {
     return (
         <div className="profile-card">
@@ -13,7 +14,9 @@ export default function ProfileCard(profile) {
             <div className="profile-content">
                 <div className="content-section">
                     <span className="name">
-                        {profile.name ? profile.name : profile.username}
+                        <Link to={`/profile/${profile.username}`}>
+                            {profile.name ? profile.name : profile.username}{" "}
+                        </Link>
                     </span>
                     <span>
                         {profile.location ? profile.location : "belirtilmemiş"}

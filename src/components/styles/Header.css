@@ -4,10 +4,9 @@
     align-items: center;
     flex-direction: row;
     background-color: #f4a734;
-    padding: 0 1.5rem;
+    padding: 0 3.5rem;
     font-weight: 600;
     height: 60px;
-    /* position: fixed; */
 }
 
 .nav-list {
