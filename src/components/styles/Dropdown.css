@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+}
+button {
+    padding: 0;
+    width: 500px;
+    border: 0;
+    background-color: #fff;
+    cursor: pointer;
+    outline: 0;
+    font-size: 16px;
+}
+.dropdown {
+    position: absolute;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+}
+.dropdown-item {
+    padding: 8px 12px;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(209, 19, 19, 0.849);
+    cursor: pointer;
+}

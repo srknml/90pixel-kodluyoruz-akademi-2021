@@ -26,7 +26,7 @@ export const routes = [
         exact: true,
         component: ProfileSettings,
         title: "Profile",
-        isNavItem: true,
+        isNavItem: false,
         isAuthNeeded: true,
     },
     {

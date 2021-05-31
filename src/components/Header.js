@@ -1,13 +1,15 @@
+/* eslint-disable array-callback-return */
 import React, { useContext } from "react";
 import "./styles/Header.css";
 import { routes } from "../config/Router";
 import { Link } from "react-router-dom";
 import { Context } from "../contexts/ContextProvider";
-export default function Header() {
-    const { isAuthed } = useContext(Context);
+import Dropdown from "./Dropdown/Dropdown";
+const Header = () => {
+    const { currentUser } = useContext(Context);
     return (
         <header className="header">
-            <a href="/">Home</a>
+            <Link to="/"> Home </Link>
             <ul className="nav-list">
                 <li className="nav-list-item">
                     {" "}
@@ -15,32 +17,22 @@ export default function Header() {
                         Contribute
                     </a>
                 </li>
-                {/* eslint-disable-next-line array-callback-return */}
                 {routes.map((route) => {
                     if (route.isNavItem) {
-                        if (route.isAuthNeeded === false) {
-                            return (
-                                <li className="nav-list-item" key={route.title}>
-                                    <Link to={route.path}>{route.title}</Link>
-                                </li>
-                            );
-                        } else {
-                            if (isAuthed) {
-                                return (
-                                    <li
-                                        className="nav-list-item"
-                                        key={route.title}
-                                    >
-                                        <Link to={route.path}>
-                                            {route.title}
-                                        </Link>
-                                    </li>
-                                );
-                            }
-                        }
+                        return (
+                            <li className="nav-list-item" key={route.title}>
+                                <Link to={route.path}>{route.title}</Link>
+                            </li>
+                        );
                     }
                 })}
+                {currentUser && (
+                    <li className="nav-list-item">
+                        <Dropdown />{" "}
+                    </li>
+                )}
             </ul>
         </header>
     );
-}
+};
+export default Header;

@@ -1,42 +1,47 @@
 import { auth } from "./FirebaseConfig";
+import { dbMethods } from "./DatabaseMethods";
 export const authMethods = {
-    sign: () => {
-        let provider = new auth.GithubAuthProvider();
-        provider.addScope("user:follow");
-        provider.addScope("user:email");
-        auth().signInWithRedirect(provider);
-    },
-    getUserInfo: async () => {
+    signPopup: async () => {
         try {
-            let res = await auth().getRedirectResult();
-            if (res.credential) {
-                let user = res.additionalUserInfo.profile;
-                let token = await res.credential.accessToken;
+            let provider = new auth.GithubAuthProvider();
+            provider.addScope("user:follow");
+            provider.addScope("user:email");
 
-                return { data: user, token };
+            await auth().setPersistence(auth.Auth.Persistence.LOCAL);
+            const result = await auth().signInWithPopup(provider);
+            if (result.additionalUserInfo.isNewUser) {
+                dbMethods.create(
+                    result.user.uid,
+                    result.additionalUserInfo.profile
+                );
             }
         } catch (err) {
             console.log(err);
         }
     },
 
-    signPopup: () => {
-        let provider = new auth.GithubAuthProvider();
-        provider.addScope("user:follow");
-        provider.addScope("user:email");
-        const result = auth()
-            .signInWithPopup(provider)
-            .then((result) => {
-                var credential = result.credential;
-                // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-                var token = credential.accessToken;
-                // The signed-in user info.
-                return { user: result.additionalUserInfo.profile, token };
-                // ...
-            })
-            .catch((err) => {
-                console.log("Error: " , err)
-            });
-        return result;
+    isSignedUser: (setCurrentUser) => {
+        auth().onAuthStateChanged((user) => {
+            if (user) {
+                dbMethods.getProfileDBTest(user.uid).then((data) => {
+                    setCurrentUser(data);
+                });
+            } else {
+                console.log("no user");
+            }
+        });
+    },
+
+    signOut: () => {
+        auth()
+            .signOut()
+            .then(
+                () => {
+                    console.log("Signed Out");
+                },
+                (error) => {
+                    console.error("Sign Out Error", error);
+                }
+            );
     },
 };

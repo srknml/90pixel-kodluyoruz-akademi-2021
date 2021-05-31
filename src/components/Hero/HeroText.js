@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import hero from "../assets/hero-image_50.jpg";
-import "./styles/Hero.css";
-export default function Hero({ text }) {
-    //farklı imagelar da alınabilir
+
+function HeroText({ text }) {
     useEffect(() => {
         makeSpans();
     }, []);
@@ -13,19 +11,15 @@ export default function Hero({ text }) {
             const spans = text
                 .map((letter) => "<span>" + letter + "</span>")
                 .join("");
+
             return (element.innerHTML = spans);
         });
     };
-
     return (
-        <div className="hero">
-            <h1 className="hero-title">
-                90Pixel &amp; Kodluyoruz Akademi React Bootcamp {text && text}
-            </h1>
-            <div className="hero-img-box">
-                {" "}
-                <img src={hero} alt="hero" />{" "}
-            </div>
-        </div>
+        <h1 className="hero-title">
+            90Pixel &amp; Kodluyoruz Akademi React Bootcamp {text && text}
+        </h1>
     );
 }
+
+export default HeroText;

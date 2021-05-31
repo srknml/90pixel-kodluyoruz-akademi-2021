@@ -7,15 +7,15 @@ export default function ProfileCard(profile) {
             <div className="profile-imgBox">
                 <img
                     className="profile-img"
-                    src={`${profile.image}`}
+                    src={`${profile.avatar_url}`}
                     alt={profile.name}
                 />
             </div>
             <div className="profile-content">
                 <div className="content-section">
                     <span className="name">
-                        <Link to={`/profile/${profile.username}`}>
-                            {profile.name ? profile.name : profile.username}{" "}
+                        <Link to={`/profile/${profile.id}`}>
+                            {profile.name ? profile.name : profile.login}{" "}
                         </Link>
                     </span>
                     <span>
@@ -25,7 +25,7 @@ export default function ProfileCard(profile) {
                 <div className="content-section">
                     <span>
                         {" "}
-                        <a href={profile.profilLink}>GitHub</a>{" "}
+                        <a href={profile.html_url}>GitHub</a>{" "}
                     </span>
                     {/* Linkedin Profil Linki */}
                 </div>

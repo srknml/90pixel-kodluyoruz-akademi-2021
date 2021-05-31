@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ProfileCard from "./ProfileCard";
 import "./styles/CardContainer.css";
 import { Context } from "../contexts/ContextProvider";
-export default function ProfileCardContainer() {
+const ProfileCardContainer = () => {
     const { profiles } = useContext(Context);
     return (
         <div className="card-container">
@@ -12,4 +12,5 @@ export default function ProfileCardContainer() {
                 })}
         </div>
     );
-}
+};
+export default ProfileCardContainer;
