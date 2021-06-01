@@ -8,7 +8,7 @@ function Home() {
 
     return (
         <>
-            <Hero />
+            <Hero heroText = "90Pixel & Kodluyoruz Akademi React Bootcamp"  />
             {currentUser ? "" : <JoinForm />}
         </>
     );

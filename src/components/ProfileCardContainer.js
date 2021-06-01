@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ProfileCard from "./ProfileCard";
+import ProfileCard from "./ProfileCard/ProfileCard";
 import "./styles/CardContainer.css";
 import { Context } from "../contexts/ContextProvider";
 const ProfileCardContainer = () => {

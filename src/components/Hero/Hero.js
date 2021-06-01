@@ -1,13 +1,13 @@
-import React from "react";
 import hero from "../../assets/hero-image_50.jpg";
-import "../styles/Hero.css";
-import HeroImg from "./HeroImg";
-import HeroText from "./HeroText";
-export default function Hero({ text }) {
+import { HeroContainer, HeroText, HeroImageBox, HeroImage } from "./style";
+const Hero = ({ heroText }) => {
     return (
-        <div className="hero">
-            <HeroText text={text} />
-            <HeroImg heroImg={hero} />
-        </div>
+        <HeroContainer>
+            <HeroText>{heroText}</HeroText>
+            <HeroImageBox>
+                <HeroImage src={hero} />
+            </HeroImageBox>
+        </HeroContainer>
     );
-}
+};
+export default Hero;

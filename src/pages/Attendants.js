@@ -4,7 +4,7 @@ import Hero from "../components/Hero/Hero";
 function Attendants() {
     return (
         <div>
-            <Hero text="Attendants" />
+            <Hero heroText = "React Bootcamp Attendants"/>
             <ProfileCardContainer />
         </div>
     );

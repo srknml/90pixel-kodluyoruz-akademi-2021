@@ -1,4 +1,6 @@
-.header {
+import styled from "styled-components";
+
+export const Headers = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,29 +9,16 @@
     padding: 0 3.5rem;
     font-weight: 600;
     height: 60px;
-}
-
-.nav-list {
+`;
+export const NavList = styled.ul`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 0;
     padding: 10px;
-}
-.nav-list-item {
+`;
+export const NavItem = styled.li`
     padding: 0 20px;
     text-decoration: none;
     list-style-type: none;
-}
-
-/* @media (max-width: 40.625em) {
-    .header {
-        width: 100%;
-    }
-}
-
-@media (max-width: 55.625em) {
-    .header {
-        width: 100%;
-    }
-} */
+`;

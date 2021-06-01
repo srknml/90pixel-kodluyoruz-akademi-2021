@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { Context } from "../../contexts/ContextProvider";
 import { Link } from "react-router-dom";
-import "../styles/Dropdown.css";
+import "./Dropdown.css";
 import DropdownItem from "./DropdownItem";
 
 export default function Dropdown() {
