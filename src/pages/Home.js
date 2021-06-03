@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import JoinForm from "../components/JoinForm";
+import Join from "../components/Join/Join";
 import Hero from "../components/Hero/Hero";
 import { Context } from "../contexts/ContextProvider";
 
@@ -8,8 +8,9 @@ function Home() {
 
     return (
         <>
-            <Hero heroText = "90Pixel & Kodluyoruz Akademi React Bootcamp"  />
-            {currentUser ? "" : <JoinForm />}
+            <Hero heroText="90Pixel & Kodluyoruz Akademi React Bootcamp" />
+            {currentUser ? "" : <Join />}
+            
         </>
     );
 }

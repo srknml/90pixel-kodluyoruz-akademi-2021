@@ -9,7 +9,8 @@ import {
     ContentSection,
     SectionItem,
 } from "./styles";
-export default function ProfileCard(profile) {
+const ProfileCard = (profile) => {
+    console.log(profile)
     return (
         <ProfileCardContainer>
             <ImageBox>
@@ -28,11 +29,11 @@ export default function ProfileCard(profile) {
                 </ContentSection>
                 <ContentSection>
                     <SectionItem>
-                        {" "}
                         <Link to={{ pathname: profile.html_url }}>GitHub</Link>
                     </SectionItem>
                 </ContentSection>
             </Content>
         </ProfileCardContainer>
     );
-}
+};
+export default ProfileCard;
